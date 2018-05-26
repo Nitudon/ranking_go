@@ -1,7 +1,8 @@
 package domain
 
 type User struct {
-	ID    string `db:"id" json:"id"`
-	Name  string `db:"name" json:"name"`
-	Score int    `db:"score" json:"score"`
+	ID    string `db:"id" json:"ID"`
+	Rank  int    `db:"rank" json:"Rank"`
+	Name  string `db:"name" json:"Name"`
+	Score int    `db:"score" json:"Score"`
 }

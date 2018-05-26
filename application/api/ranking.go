@@ -33,9 +33,12 @@ func GetRanking(g *gin.Context) {
 	score := g.Query("score")
 
 	user := new(domain.User)
+	var rank int
 
 	infra.DB.First("id = ?", id, &user)
 	user.Score, _ = strconv.Atoi(score)
+	infra.DB.Where("score > ?", user.Score).Count(&rank)
+	user.Rank = rank + 1
 	infra.DB.Save(&user)
 
 	ranking := []*domain.User{}
