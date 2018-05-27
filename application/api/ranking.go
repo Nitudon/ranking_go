@@ -43,7 +43,7 @@ func GetRanking(g *gin.Context) {
 
 	ranking := []*domain.User{}
 
-	infra.DB.Order("score desc").Find(&ranking)
+	infra.DB.Where("score >= ?", 0).Order("score asc").Find(&ranking)
 
 	g.JSON(
 		200,
